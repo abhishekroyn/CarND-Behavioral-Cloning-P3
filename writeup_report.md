@@ -142,14 +142,17 @@ I then recorded the vehicle recovering from the left side and right sides of the
 Then I repeated this process on the same track but in opposite direction than before in order to get more data points and also unbiased steering angle data as well.
 
 After the collection process, I had 10,796 number of data points. Here is an image with initial data distribution as per their steering angle values:
+
 ![alt text][image1]
 
 I then preprocessed this data by keeping only maximum 400 data points for any specific steering angle value, and discarding others. So, I removed 6,399 data points. Remaining data points left for processing was 4,397. Here is an image with filtered data distribution as per their steering angle values:
+
 ![alt text][image2]
 
 As each of these data points had 3 additional data points for left, center and right camera angles, thus total number of available data points were 13,191.
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. Thus, I had 10,552 training samples and 2,639 validation samples to work with. Here is an image with filtered training and validation data distribution as per their steering angle values:
+
 ![alt text][image3]
 
 To augment the data sat I followed four primary transformations as mentioned below (lines 70-105),
@@ -160,15 +163,19 @@ To augment the data sat I followed four primary transformations as mentioned bel
     - random flip using `cv2.flip(image, 1)` and `steering_angle = -steering_angle`
 
 For example, here is an image that has then been zoomed:
+
 ![alt text][image4]
 
 For example, here is an image that has then been panned:
+
 ![alt text][image5]
 
 For example, here is an image that has then been changed brightness:
+
 ![alt text][image6]
 
 For example, here is an image that has then been flipped:
+
 ![alt text][image7]
 
 Further, I preprocessed them as below (108-114),
@@ -179,14 +186,17 @@ Further, I preprocessed them as below (108-114),
     - normalized the data (line 113)
 
 I used this training data for training the model using batch data generator (line 195). For example, here is an image of batch augmented data as compared to original image data:
+
 ![alt text][image8]
 
 The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10 as evidenced by the `loss` and `accuracy` plots below. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 For example, here is a plot with `loss` for training and validation data:
+
 ![alt text][image9]
 
 For example, here is a plot with `accuracy` for training and validation data:
+
 ![alt text][image10]
 
 ### Simulation
