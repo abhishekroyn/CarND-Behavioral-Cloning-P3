@@ -13,17 +13,17 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./output_images/data_distribution_before.png "Initial Data Distribution"
-[image2]: ./output_images/data_distribution_after.png "Fitered Data Distribution"
-[image3]: ./output_images/train_test_data_dist.png "Training Validation Data Distribution"
-[image4]: ./output_images/compare_aug_zoom_org_img.png "Compare - Augmented zoomed Image vs Original Image"
-[image5]: ./output_images/compare_aug_pan_org_img.png "Compare - Augmented Pan Image vs Original Image"
-[image6]: ./output_images/compare_aug_bright_org_img.png "Compare - Augmented Brightness Image vs Original Image"
-[image7]: ./output_images/compare_aug_flip_org_img.png "Compare - Augmented Filtered Image vs Original Image"
-[image8]: ./output_images/compare_batch_aug_org_img.png "Compare - Augmented Batch Image vs Original Image"
-[image9]: ./output_images/train_test_loss.png "Training Validation Loss Plot"
-[image10]: ./output_images/train_test_acc.png "Training Validation Accuracy Plot"
-[video1]: ./output_images/run1.mp4  "Output video with autonomous driving"
+[image1]: ./output_images/data_distribution_before.jpg "Initial Data Distribution"
+[image2]: ./output_images/data_distribution_after.jpg "Fitered Data Distribution"
+[image3]: ./output_images/train_test_data_dist.jpg "Training Validation Data Distribution"
+[image4]: ./output_images/compare_aug_zoom_org_img.jpg "Compare - Augmented zoomed Image vs Original Image"
+[image5]: ./output_images/compare_aug_pan_org_img.jpg "Compare - Augmented Pan Image vs Original Image"
+[image6]: ./output_images/compare_aug_bright_org_img.jpg "Compare - Augmented Brightness Image vs Original Image"
+[image7]: ./output_images/compare_aug_flip_org_img.jpg "Compare - Augmented Filtered Image vs Original Image"
+[image8]: ./output_images/compare_batch_aug_org_img.jpg "Compare - Augmented Batch Image vs Original Image"
+[image9]: ./output_images/train_test_loss.jpg "Training Validation Loss Plot"
+[image10]: ./output_images/train_test_acc.jpg "Training Validation Accuracy Plot"
+[video1]: ./run1.mp4  "Output video with autonomous driving"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -55,6 +55,7 @@ The model.py file contains the code for training and saving the convolution neur
 #### 1. An appropriate model architecture has been employed
 
 My model consists of a convolution neural network with
+
     - 5x5 filter sizes and depths between 24 and 48 (model.py lines 142-144)
     - 3x3 filter sizes and depth as 64 (model.py lines 145-146)
     - a flatten layer (model.py line 147)
@@ -152,6 +153,7 @@ I finally randomly shuffled the data set and put 20% of the data into a validati
 ![alt text][image3]
 
 To augment the data sat I followed four primary transformations as mentioned below (lines 70-105),
+
     - zoom using `iaa.Affine(scale=(1, 1.3))`
     - pan using `iaa.Affine(translate_percent= {"x" : (-0.1, 0.1), "y": (-0.1, 0.1)})`
     - change brightness using `iaa.Multiply((0.2, 1.2))`
@@ -159,14 +161,18 @@ To augment the data sat I followed four primary transformations as mentioned bel
 
 For example, here is an image that has then been zoomed:
 ![alt text][image4]
+
 For example, here is an image that has then been panned:
 ![alt text][image5]
+
 For example, here is an image that has then been changed brightness:
 ![alt text][image6]
+
 For example, here is an image that has then been flipped:
 ![alt text][image7]
 
 Further, I preprocessed them as below (108-114),
+
     - cropped out part of the image from top and bottom in order to exclude sky and car dashboard regions from the images (line 109)
     - converted rgb images to yuov images and processed them using `cv2.GaussianBlur` (line 110-111)
     - resized images from (160, 320, 3) to (66, 200, 3) for aligning their size to be used with nvidia model (line 112)
@@ -179,6 +185,7 @@ The validation set helped determine if the model was over or under fitting. The 
 
 For example, here is a plot with `loss` for training and validation data:
 ![alt text][image9]
+
 For example, here is a plot with `accuracy` for training and validation data:
 ![alt text][image10]
 
@@ -187,5 +194,5 @@ For example, here is a plot with `accuracy` for training and validation data:
 #### 1. Is the car able to navigate correctly on test data?
 
 The car was driven autonomously and correctly around the track one.
-`video.mp4` captured the output as driving the car in autonomous mode. Here's a [link to my video result - video.mp4](./output_images/run1.mp4)
+`video.mp4` captured the output as driving the car in autonomous mode. Here's a ![link to my video result - video.mp4][video1]
 
