@@ -163,21 +163,13 @@ To augment the data sat I followed four primary transformations as mentioned bel
     - random flip using `cv2.flip(image, 1)` and `steering_angle = -steering_angle`
 
 For example, here is an image that has then been zoomed:
-
 ![alt text][image4]
-
 For example, here is an image that has then been panned:
-
 ![alt text][image5]
-
 For example, here is an image that has then been changed brightness:
-
 ![alt text][image6]
-
 For example, here is an image that has then been flipped:
-
 ![alt text][image7]
-
 Further, I preprocessed them as below (108-114),
 
     - cropped out part of the image from top and bottom in order to exclude sky and car dashboard regions from the images (line 109)
@@ -192,11 +184,9 @@ I used this training data for training the model using batch data generator (lin
 The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10 as evidenced by the `loss` and `accuracy` plots below. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 For example, here is a plot with `loss` for training and validation data:
-
 ![alt text][image9]
 
 For example, here is a plot with `accuracy` for training and validation data:
-
 ![alt text][image10]
 
 ### Simulation
