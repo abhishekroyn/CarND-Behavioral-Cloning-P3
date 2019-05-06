@@ -194,5 +194,5 @@ For example, here is a plot with `accuracy` for training and validation data:
 #### 1. Is the car able to navigate correctly on test data?
 
 The car was driven autonomously and correctly around the track one.
-`video.mp4` captured the output as driving the car in autonomous mode. Here's a ![link to my video result - video.mp4][video1]
+`video.mp4` captured the output as driving the car in autonomous mode. Here's a ![link to my video result - run1.mp4][video1]
 
